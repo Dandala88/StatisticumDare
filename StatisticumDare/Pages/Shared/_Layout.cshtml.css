@@ -1,48 +1,61 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+﻿.header {
+  display: flex;
+  padding: 12px 24px;
+  background-color: var(--color-dark);
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 100;
 }
 
-a {
-  color: #0077cc;
+.header > img {
+  height: 48px;
 }
 
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.input {
+  background-color: var(--color-light);
+  display: flex;
+  padding: 8px;
+  gap: 8px;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.input > input {
+  background-color: transparent;
+  border-width: 0px;
 }
 
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+.input > input:focus {
+  outline: none;
 }
 
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+.input > button {
+  height: 28px;
+  width: 28px;
+  flex-grow: 0;
+  color: var(--color-primary);
+  background-color: var(--color-dark);
+  padding: 4px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.1s;
 }
 
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+.input > button:hover {
+  background-color: var(--color-primary);
+  color: var(--color-light);
 }
 
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
+.input > button:active {
+  transform: scale(0.95);
+}
+
+.content {
+  margin-top: 80px;
 }
