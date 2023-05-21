@@ -60,12 +60,13 @@
   line-height: 42px;
 }
 
-.gameInfoTitle > a {
+.gameInfoTitle {
   transition: 0.1s;
   color: var(--color-dark);
+  text-decoration: none;
 }
 
-.gameInfoTitle > a:hover {
+.gameInfoTitle:hover {
   color: var(--color-primary);
 }
 
