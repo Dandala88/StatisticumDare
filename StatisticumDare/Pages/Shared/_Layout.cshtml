@@ -34,17 +34,11 @@
             </script>
         </div>
     </div>
-    <div class="">
+    <div class="content">
         <main role="main">
             @RenderBody()
         </main>
     </div>
-
-    <!-- <footer class="">
-        <div class="container">
-            &copy; 2023 - StatisticumDare - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
-    </footer> -->
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>
