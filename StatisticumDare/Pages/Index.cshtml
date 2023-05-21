@@ -25,6 +25,7 @@ var nodes = Model.LudumDareData?.Node;
                 <tr>
                     <th width="120px">Category</th>
                     <th width="99%"></th>
+                    <th width="60px">Place</th>
                     <th width="60px">Score</th>
                     <th width="60px">Count</th>
                 </tr>
@@ -40,6 +41,13 @@ var nodes = Model.LudumDareData?.Node;
                         <div>|</div>
                         <div class="value" style="right: @((1-(game.Magic.Grade01Average/5))*100)%;"></div>
                     </td>
+                    @if (@game.Magic.Grade01Result > 0 ) {
+                        <td>@game.Magic.Grade01Result</td>
+                    }
+                    else
+                    {
+                        <td style="color: var(--color-med)">N/A</td>
+                    }
                     <td>@game.Magic.Grade01Average.ToString( "#.##" )</td>
                     <td>@game.Grade.Grade01</td>
                 </tr>
@@ -56,6 +64,13 @@ var nodes = Model.LudumDareData?.Node;
                         <div>|</div>
                         <div class="value" style="right: @((1-(game.Magic.Grade02Average/5))*100)%;"></div>
                     </td>
+                    @if (@game.Magic.Grade02Result > 0 ) {
+                        <td>@game.Magic.Grade02Result</td>
+                    }
+                    else
+                    {
+                        <td style="color: var(--color-med)">N/A</td>
+                    }
                     <td>@game.Magic.Grade02Average.ToString( "#.##" )</td>
                     <td>@game.Grade.Grade02</td>
                 </tr>
@@ -72,6 +87,13 @@ var nodes = Model.LudumDareData?.Node;
                         <div>|</div>
                         <div class="value" style="right: @((1-(game.Magic.Grade03Average/5))*100)%;"></div>
                     </td>
+                    @if (@game.Magic.Grade03Result > 0 ) {
+                        <td>@game.Magic.Grade03Result</td>
+                    }
+                    else
+                    {
+                        <td style="color: var(--color-med)">N/A</td>
+                    }
                     <td>@game.Magic.Grade03Average.ToString( "#.##" )</td>
                     <td>@game.Grade.Grade03</td>
                 </tr>
@@ -88,6 +110,13 @@ var nodes = Model.LudumDareData?.Node;
                         <div>|</div>
                         <div class="value" style="right: @((1-(game.Magic.Grade04Average/5))*100)%;"></div>
                     </td>
+                    @if (@game.Magic.Grade04Result > 0 ) {
+                        <td>@game.Magic.Grade04Result</td>
+                    }
+                    else
+                    {
+                        <td style="color: var(--color-med)">N/A</td>
+                    }
                     <td>@game.Magic.Grade04Average.ToString( "#.##" )</td>
                     <td>@game.Grade.Grade04</td>
                 </tr>
@@ -104,6 +133,13 @@ var nodes = Model.LudumDareData?.Node;
                         <div>|</div>
                         <div class="value" style="right: @((1-(game.Magic.Grade05Average/5))*100)%;"></div>
                     </td>
+                    @if (@game.Magic.Grade05Result > 0 ) {
+                        <td>@game.Magic.Grade05Result</td>
+                    }
+                    else
+                    {
+                        <td style="color: var(--color-med)">N/A</td>
+                    }
                     <td>@game.Magic.Grade05Average.ToString( "#.##" )</td>
                     <td>@game.Grade.Grade05</td>
                 </tr>
@@ -120,6 +156,13 @@ var nodes = Model.LudumDareData?.Node;
                         <div>|</div>
                         <div class="value" style="right: @((1-(game.Magic.Grade06Average/5))*100)%;"></div>
                     </td>
+                    @if (@game.Magic.Grade06Result > 0 ) {
+                        <td>@game.Magic.Grade06Result</td>
+                    }
+                    else
+                    {
+                        <td style="color: var(--color-med)">N/A</td>
+                    }
                     <td>@game.Magic.Grade06Average.ToString( "#.##" )</td>
                     <td>@game.Grade.Grade06</td>
                 </tr>
@@ -136,6 +179,13 @@ var nodes = Model.LudumDareData?.Node;
                         <div>|</div>
                         <div class="value" style="right: @((1-(game.Magic.Grade07Average/5))*100)%;"></div>
                     </td>
+                    @if (@game.Magic.Grade07Result > 0 ) {
+                        <td>@game.Magic.Grade07Result</td>
+                    }
+                    else
+                    {
+                        <td style="color: var(--color-med)">N/A</td>
+                    }
                     <td>@game.Magic.Grade07Average.ToString( "#.##" )</td>
                     <td>@game.Grade.Grade07</td>
                 </tr>
@@ -152,6 +202,13 @@ var nodes = Model.LudumDareData?.Node;
                         <div>|</div>
                         <div class="value" style="right: @((1-(game.Magic.Grade08Average/5))*100)%;"></div>
                     </td>
+                    @if (@game.Magic.Grade08Result > 0 ) {
+                        <td>@game.Magic.Grade08Result</td>
+                    }
+                    else
+                    {
+                        <td style="color: var(--color-med)">N/A</td>
+                    }
                     <td>@game.Magic.Grade08Average.ToString( "#.##" )</td>
                     <td>@game.Grade.Grade08</td>
                 </tr>

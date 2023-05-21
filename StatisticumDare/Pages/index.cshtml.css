@@ -80,6 +80,15 @@
   line-height: 21px;
 }
 
+.data td:first-child,
+.data th:first-child {
+  text-align: left;
+}
+
+.data td {
+  text-align: center;
+}
+
 .bar {
   display: flex;
   height: 100%;
