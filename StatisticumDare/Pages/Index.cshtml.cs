@@ -24,7 +24,7 @@ namespace StatisticumDare.Pages
             try
             {
                 var ludumUser = (string)RouteData.Values["ludumUser"];
-                LudumDareData = await HttpDynamo.GetRequestAsync<LudumDareGameData>(_httpClientFactory, $"https://projectsludumdare20221120164815.azurewebsites.net/Projects/LudumDare/Games/{ludumUser}");
+                LudumDareData = await HttpDynamo.GetRequestAsync<LudumDareGameData>(_httpClientFactory, $"https://projectsludumdare20221120164815.azurewebsites.net/Projects/LudumDare/GameData/{ludumUser}");
             }
             catch
             {
