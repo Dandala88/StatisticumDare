@@ -2,244 +2,251 @@
 @model IndexModel
 @{
 ViewData["Title"] = "Home page";
-var games = Model.LudumDareData.Games;
+var games = Model?.LudumDareData?.Games;
 }
 
-<div class="gamesContainer">
-    @foreach (var game in games) { var ldUrl="https://ldjam.com" + game.Path;
-    <div class="gameWrapper">
-    <div class="gameContainer">
-        <img src=@game.Cover />
-        <div class="gameInfo">
-            <div class="gameInfoHeader">
-                    <a href=@ldUrl target="_blank" class="gameInfoTitle">
-                    <h3>@game.Name</h3>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" width="25" height="25">
-                            <path fill="currentColor"
-                                d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z" />
-                        </svg>
-                    </a>
-                <h4>@game.SubmittedDate.ToString("MM/dd/yyyy")</h4>
-            </div>
-            <table class="data">
-                <tr>
-                    <th width="120px">Category</th>
-                    <th width="99%"></th>
-                    <th width="60px">Place</th>
-                    <th width="60px">Score</th>
-                    <th width="60px">Count</th>
-                </tr>
-                @if (game.Overall.TotalScore > 0) {
-                <tr>
-                    <td>Overall</td>
-                    <td class="bar">
-                        <div>|</div>
-                        <div class="divider"></div>
-                        <div class="divider"></div>
-                        <div class="divider"></div>
-                        <div class="divider"></div>
-                        <div>|</div>
-                        <div class="target" style="left: var(--target-overall);"></div>
-                        <div class="value" style="right: @((1-(game.Overall.AverageScore/5))*100)%;"></div>
-                    </td>
-                    @if (@game.Overall.Result > 0 ) {
-                        <td>@game.Overall.Result</td>
+ @if(games == null)
+ {
+    <h3>User does not exist.</h3>
+ }
+ else
+ {
+    <div class="gamesContainer">
+        @foreach (var game in games) { var ldUrl="https://ldjam.com" + game.Path;
+        <div class="gameWrapper">
+        <div class="gameContainer">
+            <img src=@game.Cover />
+            <div class="gameInfo">
+                <div class="gameInfoHeader">
+                        <a href=@ldUrl target="_blank" class="gameInfoTitle">
+                        <h3>@game.Name</h3>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" width="25" height="25">
+                                <path fill="currentColor"
+                                    d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z" />
+                            </svg>
+                        </a>
+                    <h4>@game.SubmittedDate.ToString("MM/dd/yyyy")</h4>
+                </div>
+                <table class="data">
+                    <tr>
+                        <th width="120px">Category</th>
+                        <th width="99%"></th>
+                        <th width="60px">Place</th>
+                        <th width="60px">Score</th>
+                        <th width="60px">Count</th>
+                    </tr>
+                    @if (game.Overall.TotalScore > 0) {
+                    <tr>
+                        <td>Overall</td>
+                        <td class="bar">
+                            <div>|</div>
+                            <div class="divider"></div>
+                            <div class="divider"></div>
+                            <div class="divider"></div>
+                            <div class="divider"></div>
+                            <div>|</div>
+                            <div class="target" style="left: var(--target-overall);"></div>
+                            <div class="value" style="right: @((1-(game.Overall.AverageScore/5))*100)%;"></div>
+                        </td>
+                        @if (@game.Overall.Result > 0 ) {
+                            <td>@game.Overall.Result</td>
+                        }
+                        else
+                        {
+                            <td style="color: var(--color-med)">—</td>
+                        }
+                        <td>@game.Overall.AverageScore.ToString( "#.##" )</td>
+                        <td>@game.Overall.TotalScore</td>
+                    </tr>
                     }
-                    else
-                    {
-                        <td style="color: var(--color-med)">—</td>
+                    @if (game.Fun.TotalScore > 0) {
+                    <tr>
+                        <td>Fun</td>
+                        <td class="bar">
+                            <div>|</div>
+                            <div class="divider"></div>
+                            <div class="divider"></div>
+                            <div class="divider"></div>
+                            <div class="divider"></div>
+                            <div>|</div>
+                            <div class="target" style="left: var(--target-fun);"></div>
+                            <div class="value" style="right: @((1-(game.Fun.AverageScore/5))*100)%;"></div>
+                        </td>
+                        @if (@game.Fun.Result > 0 ) {
+                            <td>@game.Fun.Result</td>
+                        }
+                        else
+                        {
+                            <td style="color: var(--color-med)">—</td>
+                        }
+                        <td>@game.Fun.AverageScore.ToString( "#.##" )</td>
+                        <td>@game.Fun.TotalScore</td>
+                    </tr>
                     }
-                    <td>@game.Overall.AverageScore.ToString( "#.##" )</td>
-                    <td>@game.Overall.TotalScore</td>
-                </tr>
-                }
-                @if (game.Fun.TotalScore > 0) {
-                <tr>
-                    <td>Fun</td>
-                    <td class="bar">
-                        <div>|</div>
-                        <div class="divider"></div>
-                        <div class="divider"></div>
-                        <div class="divider"></div>
-                        <div class="divider"></div>
-                        <div>|</div>
-                        <div class="target" style="left: var(--target-fun);"></div>
-                        <div class="value" style="right: @((1-(game.Fun.AverageScore/5))*100)%;"></div>
-                    </td>
-                    @if (@game.Fun.Result > 0 ) {
-                        <td>@game.Fun.Result</td>
+                    @if (game.Innovation.TotalScore > 0) {
+                    <tr>
+                        <td>Innovation</td>
+                        <td class="bar">
+                            <div>|</div>
+                            <div class="divider"></div>
+                            <div class="divider"></div>
+                            <div class="divider"></div>
+                            <div class="divider"></div>
+                            <div>|</div>
+                            <div class="target" style="left: var(--target-innovation);"></div>
+                            <div class="value" style="right: @((1-(game.Innovation.AverageScore/5))*100)%;"></div>
+                        </td>
+                        @if (@game.Innovation.Result > 0 ) {
+                            <td>@game.Innovation.Result</td>
+                        }
+                        else
+                        {
+                            <td style="color: var(--color-med)">—</td>
+                        }
+                        <td>@game.Innovation.AverageScore.ToString( "#.##" )</td>
+                        <td>@game.Innovation.TotalScore</td>
+                    </tr>
                     }
-                    else
-                    {
-                        <td style="color: var(--color-med)">—</td>
+                    @if (game.Theme.TotalScore > 0) {
+                    <tr>
+                        <td>Theme</td>
+                        <td class="bar">
+                            <div>|</div>
+                            <div class="divider"></div>
+                            <div class="divider"></div>
+                            <div class="divider"></div>
+                            <div class="divider"></div>
+                            <div>|</div>
+                            <div class="target" style="left: var(--target-theme);"></div>
+                            <div class="value" style="right: @((1-(game.Theme.AverageScore/5))*100)%;"></div>
+                        </td>
+                        @if (@game.Theme.Result > 0 ) {
+                            <td>@game.Theme.Result</td>
+                        }
+                        else
+                        {
+                            <td style="color: var(--color-med)">—</td>
+                        }
+                        <td>@game.Theme.AverageScore.ToString( "#.##" )</td>
+                        <td>@game.Theme.TotalScore</td>
+                    </tr>
                     }
-                    <td>@game.Fun.AverageScore.ToString( "#.##" )</td>
-                    <td>@game.Fun.TotalScore</td>
-                </tr>
-                }
-                @if (game.Innovation.TotalScore > 0) {
-                <tr>
-                    <td>Innovation</td>
-                    <td class="bar">
-                        <div>|</div>
-                        <div class="divider"></div>
-                        <div class="divider"></div>
-                        <div class="divider"></div>
-                        <div class="divider"></div>
-                        <div>|</div>
-                        <div class="target" style="left: var(--target-innovation);"></div>
-                        <div class="value" style="right: @((1-(game.Innovation.AverageScore/5))*100)%;"></div>
-                    </td>
-                    @if (@game.Innovation.Result > 0 ) {
-                        <td>@game.Innovation.Result</td>
+                    @if(game.Graphics.TotalScore > 0){
+                    <tr>
+                        <td>Graphics</td>
+                        <td class="bar">
+                            <div>|</div>
+                            <div class="divider"></div>
+                            <div class="divider"></div>
+                            <div class="divider"></div>
+                            <div class="divider"></div>
+                            <div>|</div>
+                            <div class="target" style="left: var(--target-graphics);"></div>
+                            <div class="value" style="right: @((1-(game.Graphics.AverageScore/5))*100)%;"></div>
+                        </td>
+                        @if (@game.Graphics.Result > 0 ) {
+                            <td>@game.Graphics.Result</td>
+                        }
+                        else
+                        {
+                            <td style="color: var(--color-med)">—</td>
+                        }
+                        <td>@game.Graphics.AverageScore.ToString( "#.##" )</td>
+                        <td>@game.Graphics.TotalScore</td>
+                    </tr>
                     }
-                    else
-                    {
-                        <td style="color: var(--color-med)">—</td>
+                    @if(game.Audio.TotalScore > 0){
+                    <tr>
+                        <td>Audio</td>
+                        <td class="bar">
+                            <div>|</div>
+                            <div class="divider"></div>
+                            <div class="divider"></div>
+                            <div class="divider"></div>
+                            <div class="divider"></div>
+                            <div>|</div>
+                            <div class="target" style="left: var(--target-audio);"></div>
+                            <div class="value" style="right: @((1-(game.Audio.AverageScore/5))*100)%;"></div>
+                        </td>
+                        @if (@game.Audio.Result > 0 ) {
+                            <td>@game.Audio.Result</td>
+                        }
+                        else
+                        {
+                            <td style="color: var(--color-med)">—</td>
+                        }
+                        <td>@game.Audio.AverageScore.ToString( "#.##" )</td>
+                        <td>@game.Audio.TotalScore</td>
+                    </tr>
                     }
-                    <td>@game.Innovation.AverageScore.ToString( "#.##" )</td>
-                    <td>@game.Innovation.TotalScore</td>
-                </tr>
-                }
-                @if (game.Theme.TotalScore > 0) {
-                <tr>
-                    <td>Theme</td>
-                    <td class="bar">
-                        <div>|</div>
-                        <div class="divider"></div>
-                        <div class="divider"></div>
-                        <div class="divider"></div>
-                        <div class="divider"></div>
-                        <div>|</div>
-                        <div class="target" style="left: var(--target-theme);"></div>
-                        <div class="value" style="right: @((1-(game.Theme.AverageScore/5))*100)%;"></div>
-                    </td>
-                    @if (@game.Theme.Result > 0 ) {
-                        <td>@game.Theme.Result</td>
+                    @if (game.Humor.TotalScore > 0) {
+                    <tr>
+                        <td>Humor</td>
+                        <td class="bar">
+                            <div>|</div>
+                            <div class="divider"></div>
+                            <div class="divider"></div>
+                            <div class="divider"></div>
+                            <div class="divider"></div>
+                            <div>|</div>
+                            <div class="target" style="left: var(--target-humor);"></div>
+                            <div class="value" style="right: @((1-(game.Humor.AverageScore/5))*100)%;"></div>
+                        </td>
+                        @if (@game.Humor.Result > 0 ) {
+                            <td>@game.Humor.Result</td>
+                        }
+                        else
+                        {
+                            <td style="color: var(--color-med)">—</td>
+                        }
+                        <td>@game.Humor.AverageScore.ToString( "#.##" )</td>
+                        <td>@game.Humor.TotalScore</td>
+                    </tr>
                     }
-                    else
-                    {
-                        <td style="color: var(--color-med)">—</td>
+                    @if (game.Mood.TotalScore > 0) {
+                    <tr>
+                        <td>Mood</td>
+                        <td class="bar">
+                            <div>|</div>
+                            <div class="divider"></div>
+                            <div class="divider"></div>
+                            <div class="divider"></div>
+                            <div class="divider"></div>
+                            <div>|</div>
+                            <div class="target" style="left: var(--target-mood);"></div>
+                            <div class="value" style="right: @((1-(game.Mood.AverageScore/5))*100)%;"></div>
+                        </td>
+                        @if (@game.Mood.Result > 0 ) {
+                            <td>@game.Mood.Result</td>
+                        }
+                        else
+                        {
+                            <td style="color: var(--color-med)">—</td>
+                        }
+                        <td>@game.Mood.AverageScore.ToString( "#.##" )</td>
+                        <td>@game.Mood.TotalScore</td>
+                    </tr>
                     }
-                    <td>@game.Theme.AverageScore.ToString( "#.##" )</td>
-                    <td>@game.Theme.TotalScore</td>
-                </tr>
-                }
-                @if(game.Graphics.TotalScore > 0){
-                <tr>
-                    <td>Graphics</td>
-                    <td class="bar">
-                        <div>|</div>
-                        <div class="divider"></div>
-                        <div class="divider"></div>
-                        <div class="divider"></div>
-                        <div class="divider"></div>
-                        <div>|</div>
-                        <div class="target" style="left: var(--target-graphics);"></div>
-                        <div class="value" style="right: @((1-(game.Graphics.AverageScore/5))*100)%;"></div>
-                    </td>
-                    @if (@game.Graphics.Result > 0 ) {
-                        <td>@game.Graphics.Result</td>
-                    }
-                    else
-                    {
-                        <td style="color: var(--color-med)">—</td>
-                    }
-                    <td>@game.Graphics.AverageScore.ToString( "#.##" )</td>
-                    <td>@game.Graphics.TotalScore</td>
-                </tr>
-                }
-                @if(game.Audio.TotalScore > 0){
-                <tr>
-                    <td>Audio</td>
-                    <td class="bar">
-                        <div>|</div>
-                        <div class="divider"></div>
-                        <div class="divider"></div>
-                        <div class="divider"></div>
-                        <div class="divider"></div>
-                        <div>|</div>
-                        <div class="target" style="left: var(--target-audio);"></div>
-                        <div class="value" style="right: @((1-(game.Audio.AverageScore/5))*100)%;"></div>
-                    </td>
-                    @if (@game.Audio.Result > 0 ) {
-                        <td>@game.Audio.Result</td>
-                    }
-                    else
-                    {
-                        <td style="color: var(--color-med)">—</td>
-                    }
-                    <td>@game.Audio.AverageScore.ToString( "#.##" )</td>
-                    <td>@game.Audio.TotalScore</td>
-                </tr>
-                }
-                @if (game.Humor.TotalScore > 0) {
-                <tr>
-                    <td>Humor</td>
-                    <td class="bar">
-                        <div>|</div>
-                        <div class="divider"></div>
-                        <div class="divider"></div>
-                        <div class="divider"></div>
-                        <div class="divider"></div>
-                        <div>|</div>
-                        <div class="target" style="left: var(--target-humor);"></div>
-                        <div class="value" style="right: @((1-(game.Humor.AverageScore/5))*100)%;"></div>
-                    </td>
-                    @if (@game.Humor.Result > 0 ) {
-                        <td>@game.Humor.Result</td>
-                    }
-                    else
-                    {
-                        <td style="color: var(--color-med)">—</td>
-                    }
-                    <td>@game.Humor.AverageScore.ToString( "#.##" )</td>
-                    <td>@game.Humor.TotalScore</td>
-                </tr>
-                }
-                @if (game.Mood.TotalScore > 0) {
-                <tr>
-                    <td>Mood</td>
-                    <td class="bar">
-                        <div>|</div>
-                        <div class="divider"></div>
-                        <div class="divider"></div>
-                        <div class="divider"></div>
-                        <div class="divider"></div>
-                        <div>|</div>
-                        <div class="target" style="left: var(--target-mood);"></div>
-                        <div class="value" style="right: @((1-(game.Mood.AverageScore/5))*100)%;"></div>
-                    </td>
-                    @if (@game.Mood.Result > 0 ) {
-                        <td>@game.Mood.Result</td>
-                    }
-                    else
-                    {
-                        <td style="color: var(--color-med)">—</td>
-                    }
-                    <td>@game.Mood.AverageScore.ToString( "#.##" )</td>
-                    <td>@game.Mood.TotalScore</td>
-                </tr>
-                }
 
-            </table>
+                </table>
+            </div>
         </div>
-    </div>
-    <div class="gameFooter">
+        <div class="gameFooter">
         
-        <button onclick="(function() {
-                document.documentElement.style.setProperty('--target-overall', '@(game.Overall.AverageScore/5*100)%');
-                document.documentElement.style.setProperty('--target-fun', '@(game.Fun.AverageScore/5*100)%');
-                document.documentElement.style.setProperty('--target-innovation', '@(game.Innovation.AverageScore/5*100)%');
-                document.documentElement.style.setProperty('--target-theme', '@(game.Theme.AverageScore/5*100)%');
-                document.documentElement.style.setProperty('--target-graphics', '@(game.Graphics.AverageScore/5*100)%');
-                document.documentElement.style.setProperty('--target-audio', '@(game.Audio.AverageScore/5*100)%');
-                document.documentElement.style.setProperty('--target-humor', '@(game.Humor.AverageScore/5*100)%');
-                document.documentElement.style.setProperty('--target-mood', '@(game.Mood.AverageScore/5*100)%');
-            })()">
-            Set as compare target 
-        </button>
+            <button onclick="(function() {
+                    document.documentElement.style.setProperty('--target-overall', '@(game.Overall.AverageScore/5*100)%');
+                    document.documentElement.style.setProperty('--target-fun', '@(game.Fun.AverageScore/5*100)%');
+                    document.documentElement.style.setProperty('--target-innovation', '@(game.Innovation.AverageScore/5*100)%');
+                    document.documentElement.style.setProperty('--target-theme', '@(game.Theme.AverageScore/5*100)%');
+                    document.documentElement.style.setProperty('--target-graphics', '@(game.Graphics.AverageScore/5*100)%');
+                    document.documentElement.style.setProperty('--target-audio', '@(game.Audio.AverageScore/5*100)%');
+                    document.documentElement.style.setProperty('--target-humor', '@(game.Humor.AverageScore/5*100)%');
+                    document.documentElement.style.setProperty('--target-mood', '@(game.Mood.AverageScore/5*100)%');
+                })()">
+                Set as compare target 
+            </button>
+        </div>
+        </div>
+        }
     </div>
-    </div>
-    }
-</div>
+}
