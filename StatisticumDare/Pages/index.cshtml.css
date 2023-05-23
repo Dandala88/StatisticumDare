@@ -1,24 +1,40 @@
+:root {
+  --target-overall: 0;
+  --target-fun: 0;
+  --target-innovation: 0;
+  --target-theme: 0;
+  --target-graphics: 0;
+  --target-audio: 0;
+  --target-humor: 0;
+  --target-mood: 0;
+}
+
 .gamesContainer {
   display: flex;
   flex-direction: column;
   padding: 24px;
   gap: 24px;
+  align-items: stretch;
+}
+
+.gameWrapper {
+  background: var(--color-light);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .gameContainer {
   display: flex;
   align-items: flex-start;
   padding: 24px;
+  padding-bottom: 0;
   gap: 24px;
-  background: var(--color-light);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .gameContainer > img {
   width: 480px;
 }
 
-@media (max-width: 1250px) {
+@media (max-width: 1100px) {
   .gameContainer {
     flex-direction: column;
     align-items: stretch;
@@ -71,7 +87,9 @@
 }
 
 .data {
-  border-spacing: 16px 14px;
+  border-spacing: 0;
+  padding: 0 16px;
+  margin-bottom: 16px;
 }
 
 .data > th {
@@ -79,6 +97,17 @@
   font-weight: 600;
   font-size: 18px;
   line-height: 21px;
+  color: var(--color-dark);
+}
+
+.data tr,
+.data td,
+.data th {
+  padding: 8px 7px;
+}
+
+.data tr:hover td {
+  color: var(--color-secondary);
 }
 
 .data td:first-child,
@@ -90,6 +119,17 @@
   text-align: center;
 }
 
+.target {
+  content: " ";
+  width: 0;
+  border-left: 2px solid var(--color-dark);
+  border-right: 2px solid var(--color-dark);
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+}
+
 .bar {
   display: flex;
   height: 100%;
@@ -98,6 +138,8 @@
   color: transparent;
   user-select: none;
   position: relative;
+  padding: 0 !important;
+  margin: 8px 7px;
 }
 
 .value {
@@ -112,5 +154,49 @@
 .divider {
   background-color: var(--color-light);
   width: min(3%, 16px);
-  z-index: 2;
+  z-index: 3;
+}
+
+.gameFooter {
+  border-bottom: 8px var(--color-dark) solid;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+}
+
+.gameFooter button {
+  bottom: -8px;
+  border: none;
+  padding: 8px;
+  padding-right: 28px;
+  margin: 0;
+  color: var(--color-light);
+  position: relative;
+  background-color: var(--color-dark);
+  height: 32px;
+}
+
+.gameFooter button:last-child {
+  padding-right: 16px;
+}
+
+.gameFooter button:hover {
+  background-color: var(--color-primary);
+}
+
+.gameFooter button::before {
+  position: absolute;
+  content: " ";
+  border-top: 16px solid transparent;
+  border-right: 16px solid var(--color-dark);
+  border-bottom: 16px solid var(--color-dark);
+  border-left: 16px solid transparent;
+  top: 0;
+  right: 100%;
+  bottom: 8px;
+}
+
+.gameFooter button:hover::before {
+  border-right: 16px solid var(--color-primary);
+  border-bottom: 16px solid var(--color-primary);
 }
