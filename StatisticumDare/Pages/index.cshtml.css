@@ -72,8 +72,8 @@
 }
 
 .data {
-  /* Swap this to padding so that hover works better */
-  border-spacing: 16px 14px;
+  border-spacing: 0;
+  padding: 0 16px;
 }
 
 .data > th {
@@ -82,6 +82,12 @@
   font-size: 18px;
   line-height: 21px;
   color: var(--color-dark);
+}
+
+.data tr,
+.data td,
+.data th {
+  padding: 8px 7px;
 }
 
 .data tr:hover td {
@@ -105,6 +111,8 @@
   color: transparent;
   user-select: none;
   position: relative;
+  padding: 0 !important;
+  margin: 8px 7px;
 }
 
 .value {
