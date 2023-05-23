@@ -1,7 +1,7 @@
 ﻿using Core.HttpDynamo;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using StatisticumDare.Models;
+using Projects.LudumDare.ViewModels;
 
 namespace StatisticumDare.Pages
 {
@@ -10,7 +10,7 @@ namespace StatisticumDare.Pages
         private readonly ILogger<IndexModel> _logger;
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public LudumDareData? LudumDareData { get; set; }
+        public LudumDareGameData? LudumDareData { get; set; }
 
 
         public IndexModel(ILogger<IndexModel> logger, IHttpClientFactory httpClientFactory)
@@ -24,11 +24,11 @@ namespace StatisticumDare.Pages
             try
             {
                 var ludumUser = (string)RouteData.Values["ludumUser"];
-                LudumDareData = await HttpDynamo.GetRequestAsync<LudumDareData>(_httpClientFactory, $"https://projectsludumdare20221120164815.azurewebsites.net/Projects/LudumDare/Games/{ludumUser}");
+                LudumDareData = await HttpDynamo.GetRequestAsync<LudumDareGameData>(_httpClientFactory, $"https://projectsludumdare20221120164815.azurewebsites.net/Projects/LudumDare/Games/{ludumUser}");
             }
             catch
             {
-                LudumDareData = new LudumDareData();
+                LudumDareData = new LudumDareGameData();
             }
         }
     }
