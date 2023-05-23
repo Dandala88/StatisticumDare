@@ -6,7 +6,9 @@ var nodes = Model.LudumDareData?.Node;
 }
 
 <div class="gamesContainer">
-    @foreach (var game in nodes) { var ldUrl="https://ldjam.com" + game.Path; <div class="gameContainer">
+    @foreach (var game in nodes) { var ldUrl="https://ldjam.com" + game.Path;
+    <div class="gameWrapper">
+    <div class="gameContainer">
         <img src=@game.Meta.Cover />
         <div class="gameInfo">
             <div class="gameInfoHeader">
@@ -37,6 +39,7 @@ var nodes = Model.LudumDareData?.Node;
                         <div class="divider"></div>
                         <div class="divider"></div>
                         <div>|</div>
+                        <div class="target" style="left: var(--target-overall);"></div>
                         <div class="value" style="right: @((1-(game.Magic.Grade01Average/5))*100)%;"></div>
                     </td>
                     @if (@game.Magic.Grade01Result > 0 ) {
@@ -60,6 +63,7 @@ var nodes = Model.LudumDareData?.Node;
                         <div class="divider"></div>
                         <div class="divider"></div>
                         <div>|</div>
+                        <div class="target" style="left: var(--target-fun);"></div>
                         <div class="value" style="right: @((1-(game.Magic.Grade02Average/5))*100)%;"></div>
                     </td>
                     @if (@game.Magic.Grade02Result > 0 ) {
@@ -83,6 +87,7 @@ var nodes = Model.LudumDareData?.Node;
                         <div class="divider"></div>
                         <div class="divider"></div>
                         <div>|</div>
+                        <div class="target" style="left: var(--target-innovation);"></div>
                         <div class="value" style="right: @((1-(game.Magic.Grade03Average/5))*100)%;"></div>
                     </td>
                     @if (@game.Magic.Grade03Result > 0 ) {
@@ -106,6 +111,7 @@ var nodes = Model.LudumDareData?.Node;
                         <div class="divider"></div>
                         <div class="divider"></div>
                         <div>|</div>
+                        <div class="target" style="left: var(--target-theme);"></div>
                         <div class="value" style="right: @((1-(game.Magic.Grade04Average/5))*100)%;"></div>
                     </td>
                     @if (@game.Magic.Grade04Result > 0 ) {
@@ -129,6 +135,7 @@ var nodes = Model.LudumDareData?.Node;
                         <div class="divider"></div>
                         <div class="divider"></div>
                         <div>|</div>
+                        <div class="target" style="left: var(--target-graphics);"></div>
                         <div class="value" style="right: @((1-(game.Magic.Grade05Average/5))*100)%;"></div>
                     </td>
                     @if (@game.Magic.Grade05Result > 0 ) {
@@ -152,6 +159,7 @@ var nodes = Model.LudumDareData?.Node;
                         <div class="divider"></div>
                         <div class="divider"></div>
                         <div>|</div>
+                        <div class="target" style="left: var(--target-audio);"></div>
                         <div class="value" style="right: @((1-(game.Magic.Grade06Average/5))*100)%;"></div>
                     </td>
                     @if (@game.Magic.Grade06Result > 0 ) {
@@ -175,6 +183,7 @@ var nodes = Model.LudumDareData?.Node;
                         <div class="divider"></div>
                         <div class="divider"></div>
                         <div>|</div>
+                        <div class="target" style="left: var(--target-humor);"></div>
                         <div class="value" style="right: @((1-(game.Magic.Grade07Average/5))*100)%;"></div>
                     </td>
                     @if (@game.Magic.Grade07Result > 0 ) {
@@ -198,6 +207,7 @@ var nodes = Model.LudumDareData?.Node;
                         <div class="divider"></div>
                         <div class="divider"></div>
                         <div>|</div>
+                        <div class="target" style="left: var(--target-mood);"></div>
                         <div class="value" style="right: @((1-(game.Magic.Grade08Average/5))*100)%;"></div>
                     </td>
                     @if (@game.Magic.Grade08Result > 0 ) {
@@ -214,6 +224,22 @@ var nodes = Model.LudumDareData?.Node;
 
             </table>
         </div>
+    </div>
+    <div class="gameFooter">
+        
+        <button onclick="(function() {
+                document.documentElement.style.setProperty('--target-overall', '@(game.Magic.Grade01Average/5*100)%');
+                document.documentElement.style.setProperty('--target-fun', '@(game.Magic.Grade02Average/5*100)%');
+                document.documentElement.style.setProperty('--target-innovation', '@(game.Magic.Grade03Average/5*100)%');
+                document.documentElement.style.setProperty('--target-theme', '@(game.Magic.Grade04Average/5*100)%');
+                document.documentElement.style.setProperty('--target-graphics', '@(game.Magic.Grade05Average/5*100)%');
+                document.documentElement.style.setProperty('--target-audio', '@(game.Magic.Grade06Average/5*100)%');
+                document.documentElement.style.setProperty('--target-humor', '@(game.Magic.Grade07Average/5*100)%');
+                document.documentElement.style.setProperty('--target-mood', '@(game.Magic.Grade08Average/5*100)%');
+            })()">
+            Set as compare target 
+        </button>
+    </div>
     </div>
     }
 </div>
