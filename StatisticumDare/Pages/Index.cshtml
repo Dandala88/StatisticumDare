@@ -52,13 +52,19 @@ var games = Model?.LudumDareData?.Games;
             <img src=@game.Cover />
             <div class="gameInfo">
                 <div class="gameInfoHeader">
+                    <div class="row">
                         <a href=@ldUrl target="_blank" class="gameInfoTitle">
-                        <h3>@game.Name</h3>
+                            <h3>@game.Name</h3>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" width="25" height="25">
                                 <path fill="currentColor"
                                     d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z" />
                             </svg>
                         </a>
+                        <div>
+                            <h4 class="edition">LD @game.Edition</h4>
+                            <h4 class="type">@game.Format</h4>
+                        </div>
+                    </div>
                     <h4>@game.SubmittedDate.ToString("MM/dd/yyyy")</h4>
                 </div>
                 <table class="data">
@@ -83,7 +89,7 @@ var games = Model?.LudumDareData?.Games;
                             <div class="value" style="right: @((1-(game.Overall.AverageScore/5))*100)%;"></div>
                         </td>
                         @if (@game.Overall.Result > 0 ) {
-                            <td>@game.Overall.Result</td>
+                            <td style="white-space:nowrap;">@game.Overall.Result (@(game.Overall.Result/game.CategoryCompetitors*100)%)</td>
                         }
                         else
                         {
@@ -107,7 +113,7 @@ var games = Model?.LudumDareData?.Games;
                             <div class="value" style="right: @((1-(game.Fun.AverageScore/5))*100)%;"></div>
                         </td>
                         @if (@game.Fun.Result > 0 ) {
-                            <td>@game.Fun.Result</td>
+                            <td>@game.Fun.Result  (@(game.Fun.Result/game.CategoryCompetitors*100)%)</td>
                         }
                         else
                         {
@@ -131,7 +137,7 @@ var games = Model?.LudumDareData?.Games;
                             <div class="value" style="right: @((1-(game.Innovation.AverageScore/5))*100)%;"></div>
                         </td>
                         @if (@game.Innovation.Result > 0 ) {
-                            <td>@game.Innovation.Result</td>
+                            <td style="white-space:nowrap;">@game.Innovation.Result (@(game.Innovation.Result/game.CategoryCompetitors*100)%)</td>
                         }
                         else
                         {
@@ -155,7 +161,7 @@ var games = Model?.LudumDareData?.Games;
                             <div class="value" style="right: @((1-(game.Theme.AverageScore/5))*100)%;"></div>
                         </td>
                         @if (@game.Theme.Result > 0 ) {
-                            <td>@game.Theme.Result</td>
+                            <td style="white-space:nowrap;">@game.Theme.Result (@(game.Theme.Result/game.CategoryCompetitors*100)%)</td>
                         }
                         else
                         {
@@ -179,7 +185,7 @@ var games = Model?.LudumDareData?.Games;
                             <div class="value" style="right: @((1-(game.Graphics.AverageScore/5))*100)%;"></div>
                         </td>
                         @if (@game.Graphics.Result > 0 ) {
-                            <td>@game.Graphics.Result</td>
+                            <td style="white-space:nowrap;">@game.Graphics.Result (@(game.Graphics.Result/game.CategoryCompetitors*100)%)</td>
                         }
                         else
                         {
@@ -203,7 +209,7 @@ var games = Model?.LudumDareData?.Games;
                             <div class="value" style="right: @((1-(game.Audio.AverageScore/5))*100)%;"></div>
                         </td>
                         @if (@game.Audio.Result > 0 ) {
-                            <td>@game.Audio.Result</td>
+                            <td style="white-space:nowrap;">@game.Audio.Result (@(game.Audio.Result/game.CategoryCompetitors*100)%)</td>
                         }
                         else
                         {
@@ -227,7 +233,7 @@ var games = Model?.LudumDareData?.Games;
                             <div class="value" style="right: @((1-(game.Humor.AverageScore/5))*100)%;"></div>
                         </td>
                         @if (@game.Humor.Result > 0 ) {
-                            <td>@game.Humor.Result</td>
+                            <td style="white-space:nowrap;">@game.Humor.Result (@(game.Humor.Result/game.CategoryCompetitors*100)%)</td>
                         }
                         else
                         {
@@ -251,7 +257,7 @@ var games = Model?.LudumDareData?.Games;
                             <div class="value" style="right: @((1-(game.Mood.AverageScore/5))*100)%;"></div>
                         </td>
                         @if (@game.Mood.Result > 0 ) {
-                            <td>@game.Mood.Result</td>
+                            <td style="white-space:nowrap;">@game.Mood.Result (@(game.Mood.Result/game.CategoryCompetitors*100)%)</td>
                         }
                         else
                         {
