@@ -51,6 +51,12 @@
   }
 }
 
+.data tr,
+.data td,
+.data th {
+  padding: 8px 7px;
+}
+
 .row {
   display: flex;
   align-items: center;
@@ -100,6 +106,10 @@
   transition: 0.1s;
   color: var(--color-dark);
   text-decoration: none;
+}
+
+.data th:first-child {
+  text-align: left;
 }
 
 .gameInfoTitle:hover {
