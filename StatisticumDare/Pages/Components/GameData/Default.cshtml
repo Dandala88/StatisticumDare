@@ -1,0 +1,40 @@
+@model CategoryModel
+
+@if (Model.data.TotalScore > 0) {
+    <tr>
+        <td>@Model.name</td>
+        <td class="bar desktop">
+            <div>|</div>
+            <div class="divider"></div>
+            <div class="divider"></div>
+            <div class="divider"></div>
+            <div class="divider"></div>
+            <div>|</div>
+            <div class="target" style="left: var(--target-@Model.name.ToLower());"></div>
+            <div class="value" style="right: @(100-Model.getWeightedValue())%;"></div>
+        </td>
+        <td>@Model.data.AverageScore.ToString( "#.##" )</td>
+        @if (@Model.data.Result > 0 ) {
+            <td style="white-space:nowrap;">@Model.data.Result (@Model.data.Percentile.ToString("00.0")%)</td>
+        }
+        else
+        {
+            <td style="color: var(--color-med)">—</td>
+        }
+        <td>@Model.data.TotalScore</td>
+    </tr>
+    <tr class="mobile">
+        <td colspan="4" style="padding-left: 0; padding-right: 0; padding-top: 0;">
+            <div class="bar" style="margin-top: 0;">
+            <div>|</div>
+            <div class="divider"></div>
+            <div class="divider"></div>
+            <div class="divider"></div>
+            <div class="divider"></div>
+            <div>|</div>
+            <div class="target" style="left: var(--target-@Model.name.ToLower());"></div>
+            <div class="value" style="right: @(100-Model.getWeightedValue())%;"></div>
+            </div>
+        </td>
+    </tr>
+}

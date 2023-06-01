@@ -1,5 +1,4 @@
 ﻿using Core.HttpDynamo;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Projects.LudumDare.ViewModels;
 
@@ -31,6 +30,25 @@ namespace StatisticumDare.Pages
             {
                 LudumDareData = new LudumDareGameData();
             }
+        }
+    }
+
+    public class Helpers {
+        public static double weightValue(double value) {
+            double amount = 0.1;
+            double remainder = value % 1;
+            double baseNumber = Math.Floor(value);
+            double weightedRemaineder = 0;
+            if (value <= 1) {
+                weightedRemaineder = (remainder * (1-amount/2));
+            } else 
+            if (value >= 4) {
+                weightedRemaineder = (remainder * (1-amount/2) + (amount/2));
+            } else {
+                weightedRemaineder = (remainder * (1-amount) + (amount/2));
+            }
+            
+            return (baseNumber + weightedRemaineder)/5*100;
         }
     }
 }
