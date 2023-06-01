@@ -31,5 +31,9 @@ namespace StatisticumDare.Pages.Components.GameData
             this.name = name;
             this.data = data;
         }
+
+        public double getWeightedValue() {
+            return Helpers.weightValue(this.data.AverageScore);
+        }
     }
 }

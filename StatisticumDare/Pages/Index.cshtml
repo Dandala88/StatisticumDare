@@ -70,9 +70,9 @@ var games = Model?.LudumDareData?.Games;
                 <table class="data">
                     <tr>
                         <th width="120px">Category</th>
-                        <th width="99%"></th>
-                        <th width="60px">Place</th>
+                        <th width="99%" class="desktop"></th>
                         <th width="60px">Score</th>
+                        <th width="60px">Place</th>
                         <th width="60px">Count</th>
                     </tr>
                     @await Component.InvokeAsync("GameData", new Pages.Components.GameData.CategoryModel("Overall", game.Overall))
@@ -89,14 +89,14 @@ var games = Model?.LudumDareData?.Games;
         <div class="gameFooter">
         
             <button onclick="(function() {
-                    document.documentElement.style.setProperty('--target-overall', '@(game.Overall.AverageScore/5*100)%');
-                    document.documentElement.style.setProperty('--target-fun', '@(game.Fun.AverageScore/5*100)%');
-                    document.documentElement.style.setProperty('--target-innovation', '@(game.Innovation.AverageScore/5*100)%');
-                    document.documentElement.style.setProperty('--target-theme', '@(game.Theme.AverageScore/5*100)%');
-                    document.documentElement.style.setProperty('--target-graphics', '@(game.Graphics.AverageScore/5*100)%');
-                    document.documentElement.style.setProperty('--target-audio', '@(game.Audio.AverageScore/5*100)%');
-                    document.documentElement.style.setProperty('--target-humor', '@(game.Humor.AverageScore/5*100)%');
-                    document.documentElement.style.setProperty('--target-mood', '@(game.Mood.AverageScore/5*100)%');
+                    document.documentElement.style.setProperty('--target-overall', '@Helpers.weightValue(game.Overall.AverageScore)%');
+                    document.documentElement.style.setProperty('--target-fun', '@Helpers.weightValue(game.Fun.AverageScore)%');
+                    document.documentElement.style.setProperty('--target-innovation', '@Helpers.weightValue(game.Innovation.AverageScore)%');
+                    document.documentElement.style.setProperty('--target-theme', '@Helpers.weightValue(game.Theme.AverageScore)%');
+                    document.documentElement.style.setProperty('--target-graphics', '@Helpers.weightValue(game.Graphics.AverageScore)%');
+                    document.documentElement.style.setProperty('--target-audio', '@Helpers.weightValue(game.Audio.AverageScore)%');
+                    document.documentElement.style.setProperty('--target-humor', '@Helpers.weightValue(game.Humor.AverageScore)%');
+                    document.documentElement.style.setProperty('--target-mood', '@Helpers.weightValue(game.Mood.AverageScore)%');
                 })()">
                 Set as compare target 
             </button>

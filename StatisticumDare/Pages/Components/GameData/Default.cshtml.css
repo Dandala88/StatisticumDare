@@ -66,6 +66,6 @@
 
 .divider {
   background-color: var(--color-light);
-  width: min(3%, 16px);
+  width: 3%;
   z-index: 3;
 }

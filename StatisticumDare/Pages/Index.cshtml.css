@@ -1,14 +1,3 @@
-:root {
-  --target-overall: 0;
-  --target-fun: 0;
-  --target-innovation: 0;
-  --target-theme: 0;
-  --target-graphics: 0;
-  --target-audio: 0;
-  --target-humor: 0;
-  --target-mood: 0;
-}
-
 .gamesContainer {
   display: flex;
   flex-direction: column;
