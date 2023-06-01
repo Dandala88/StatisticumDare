@@ -68,6 +68,11 @@ html {
   transform: scale(0.95);
 }
 
+.logo {
+  height: 48px;
+  flex-shrink: 1;
+}
+
 @media (min-width: 600px) {
   .mobile {
     display: none !important ;
@@ -77,5 +82,9 @@ html {
 @media (max-width: 600px) {
   .desktop {
     display: none !important;
+  }
+
+  .logo {
+    height: 32px;
   }
 }

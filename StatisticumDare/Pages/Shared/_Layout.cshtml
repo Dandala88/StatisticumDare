@@ -13,7 +13,9 @@
 
 <body>
     <div class="header">
-        <a asp-page="Home"><img src="~/img/sdlogo.svg" /></a>
+        <a asp-page="Home">
+            <img class="logo" src="~/img/sdlogo.svg" />
+        </a>
         @RenderSection("Header", required: false)
     </div>
     <div class="content">
