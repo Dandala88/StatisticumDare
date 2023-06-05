@@ -32,7 +32,7 @@ namespace StatisticumDare.Pages.Components.GameData
             this.data = data;
         }
 
-        public double getWeightedValue() {
+        public double? getWeightedValue() {
             return Helpers.weightValue(this.data.AverageScore);
         }
     }

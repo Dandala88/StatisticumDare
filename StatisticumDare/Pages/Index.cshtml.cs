@@ -34,10 +34,12 @@ namespace StatisticumDare.Pages
     }
 
     public class Helpers {
-        public static double weightValue(double value) {
+        public static double? weightValue(double? value) {
+            if (value == null) return null;
+            var val = value.Value;
             double amount = 0.1;
-            double remainder = value % 1;
-            double baseNumber = Math.Floor(value);
+            double remainder = val % 1;
+            double baseNumber = Math.Floor(val);
             double weightedRemaineder = 0;
             if (value <= 1) {
                 weightedRemaineder = (remainder * (1-amount/2));
