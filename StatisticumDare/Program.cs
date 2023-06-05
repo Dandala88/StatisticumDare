@@ -1,10 +1,13 @@
 using Core.HttpDynamo;
+using StatisticumDare.Services;
+using StatisticumDare.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddHttpDynamo();
+builder.Services.AddScoped<ILudumDareService, LudumDareService>();
 
 var app = builder.Build();
 
