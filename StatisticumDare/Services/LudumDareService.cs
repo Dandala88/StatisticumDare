@@ -80,6 +80,8 @@ namespace StatisticumDare.Services
                     Games = new List<Game>()
                 };
 
+                gameData.Node.Sort((x, y) => DateTime.Compare(y.NodeTimestamp, x.NodeTimestamp));
+
                 foreach (var node in gameData.Node)
                 {
                     int categoryCompetitors = 0;
