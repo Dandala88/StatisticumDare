@@ -1,6 +1,7 @@
 ﻿using Core.HttpDynamo;
 using StatisticumDare.Models;
 using StatisticumDare.Services.Interfaces;
+using System.Reflection.Metadata.Ecma335;
 
 namespace StatisticumDare.Services
 {
@@ -80,7 +81,14 @@ namespace StatisticumDare.Services
                     Games = new List<Game>()
                 };
 
-                gameData.Node.Sort((x, y) => DateTime.Compare(y.NodeTimestamp, x.NodeTimestamp));
+                gameData.Node.Sort((x, y) => DateTime.Compare(GetNodeTime(y), GetNodeTime(x)));
+
+                DateTime GetNodeTime(Node node)
+                {
+                    if (node.Created.HasValue)
+                        return node.Created.Value;
+                    return node.NodeTimestamp;
+                }
 
                 foreach (var node in gameData.Node)
                 {
