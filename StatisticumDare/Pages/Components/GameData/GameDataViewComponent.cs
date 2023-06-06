@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using Projects.LudumDare.ViewModels;
+using StatisticumDare.Models;
 
 namespace StatisticumDare.Pages.Components.GameData
 {
@@ -24,16 +24,16 @@ namespace StatisticumDare.Pages.Components.GameData
     }
 
     public class CategoryModel {
-        public Category data { get; set; }
-        public string name { get; set; }
+        public Category _data { get; set; }
+        public string _name { get; set; }
 
-        public CategoryModel(string name, Category data) {
-            this.name = name;
-            this.data = data;
+        public CategoryModel(string? name, Category? data) {
+            _name = name ?? "Unknown";
+            _data = data ?? new Category();
         }
 
         public double? getWeightedValue() {
-            return Helpers.weightValue(this.data.AverageScore);
+            return Helpers.weightValue(this._data.AverageScore);
         }
     }
 }
