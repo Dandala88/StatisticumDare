@@ -25,7 +25,7 @@ namespace StatisticumDare.Services
 
         private async Task<GameFeed?> GetGameFeed(UserProfile userProfile)
         {
-            var gameFeed = await HttpDynamo.GetRequestAsync<GameFeed>(_httpClientFactory, $"https://api.ldjam.com/vx/node/feed/{userProfile.NodeId}/authors/item/game?limit=100");
+            var gameFeed = await HttpDynamo.GetRequestAsync<GameFeed>(_httpClientFactory, $"https://api.ldjam.com/vx/node/feed/{userProfile.NodeId}/authors/item/game?limit=75");
 
             return gameFeed;
         }
